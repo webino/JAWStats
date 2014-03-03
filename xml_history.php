@@ -1,6 +1,6 @@
 <?php
 /*
- * JAWStats 0.X Web Statistics
+ * JAWStats 0.8.0 Web Statistics
  *
  * Copyright (c) 2009 Jon Combe (jawstats.com)
  *
