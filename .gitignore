@@ -1,0 +1,4 @@
+.DS_Store
+nbproject/private
+config.php
+!.gitignore

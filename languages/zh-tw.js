@@ -1,0 +1,30 @@
+// JAWStats zh-tw translation file
+// Last Updated: Sunday, 17th April 2011. 23:15:09
+oTranslation = {
+    "All Browsers": "所有瀏覽器",
+    "All Months": "所有月份",
+    "All Operating Systems": "所有作業系統",
+    "Asia": "亚洲",
+    "Bandwidth": "流量",
+    "Browser": "瀏覽器",
+    "Browsers": "瀏覽器",
+    "BW": "流量",
+    "Countries": "地區",
+    "Daily Average": "每日平均",
+    "Exit": "離開",
+    "Filetypes": "檔案類型",
+    "Keyphrases": "關鍵字句",
+    "Keywords": "關鍵字",
+    "Operating Systems": "作業系統",
+    "Pages": "網頁",
+    "Referrers": "連結",
+    "Search Engines": "搜尋引擎",
+    "Searches": "搜尋的關鍵字",
+    "Sessions": "停留時間",
+    "Spiders": "搜尋引擎的漫遊器",
+    "Status": "狀態",
+    "This Month": "本月份",
+    "Top 10 Referrers": "前10名連結",
+    "Top 50 Referrers": "前50名連結",
+    "Top Bandwidth": "流量列表"
+};

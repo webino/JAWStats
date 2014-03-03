@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<menu>
+    <tab id="thismonth" subview="all" label="This Month">
+        <subview id="all" label="Overview" />
+        <subview id="visits" label="Calendar of Visitors" />
+        <subview id="pages" label="Calendar of Page Views" />
+        <subview id="hits" label="Calendar of Hits" />
+        <subview id="bandwidth" label="Calendar of Bandwidth Usage" />
+    </tab>
+    <tab id="allmonths" subview="all" label="All Months">
+        <subview id="all" label="Visitors each Month" />
+        <subview id="year" label="Visitors each Year" />
+    </tab>
+    <tab id="time" subview="all" label="Hours" />
+    <tab id="browser" subview="family" label="Browsers">
+        <subview id="family" label="Browser Families" />
+        <subview id="all" label="All Browsers" />
+    </tab>
+    <tab id="os" subview="family" label="OS">
+        <subview id="family" label="Operating System Families" />
+        <subview id="all" label="All Operating Systems" />
+    </tab>
+    <tab id="country" subview="all" label="Countries">
+        <subview id="all" label="Countries" />
+        <subview id="continent" label="Continents" />
+        <subview id="Asia" label="Asia" />
+        <subview id="Europe" label="Europe" />
+        <subview id="North America" label="North America" />
+        <subview id="Oceania" label="Oceania" />
+        <subview id="South America" label="South America" />
+        <subview id="Other" label="Other" />
+    </tab>
+    <tab id="city" subview="all" label="Cities">
+        <subview id="all" label="Cities" />
+        <subview id="country" label="Countries" />
+    </tab>
+    <tab id="org" subview="all" label="Organizations">
+    </tab>
+    <tab id="visitor" subview="top100" label="Visitors">
+        <subview id="top100" label="Top 100" />
+        <subview id="network" label="Networks" />
+    </tab>
+    <tab id="filetypes" subview="all" label="Filetypes" />
+    <tab id="pages" subview="topPages" label="Pages">
+        <subview id="topPages" label="Top Page Views" />
+        <subview id="topBW" label="Top Bandwidth" />
+        <subview id="topEntry" label="Top Entry Pages" />
+        <subview id="topExit" label="Top Exit Pages" />
+    </tab>
+    <tab id="pagerefs" subview="se" label="Referrers">
+        <subview id="se" label="Search Engines" />
+        <subview id="top10" label="Top 10 Referrers" />
+        <subview id="top50" label="Top 50 Referrers" />
+        <subview id="all" label="All Referrers" />
+        <subview id="domains" label="Referring Domains" />
+    </tab>
+    <tab id="robots" subview="all" label="Spiders" />
+    <tab id="searches" subview="keyphrases" label="Searches">
+        <subview id="keywords" label="Keywords" />
+        <subview id="keyphrases" label="Keyphrases" />
+        <subview id="keywordcloud" label="Keywords Tag Cloud" />
+        <subview id="keyphrasecloud" label="Keyphrases Tag Cloud" />
+    </tab>
+    <tab id="session" subview="all" label="Sessions" />
+    <tab id="status" subview="all" label="Status">
+        <subview id="all" label="Status Codes" />
+        <subview id="404" label="File Not Found URLs" />
+    </tab>
+</menu>

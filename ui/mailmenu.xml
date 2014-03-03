@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<menu>
+    <tab id="thismonth" subview="all" label="This Month">
+        <subview id="all" label="Overview" />
+        <subview id="emails" label="Calendar of Emails" />
+        <subview id="bandwidth" label="Calendar of Bandwidth Usage" />
+    </tab>
+    <tab id="allmonths" subview="all" label="All Months">
+        <subview id="all" label="Emails each Month" />
+        <subview id="year" label="Emails each Year" />
+    </tab>
+    <tab id="time" subview="all" label="Hours" />
+    <tab id="country" subview="all" label="Countries">
+        <subview id="all" label="Countries" />
+        <subview id="continent" label="Continents" />
+        <subview id="Asia" label="Asia" />
+        <subview id="Europe" label="Europe" />
+        <subview id="North America" label="North America" />
+        <subview id="Oceania" label="Oceania" />
+        <subview id="South America" label="South America" />
+        <subview id="Other" label="Other" />
+    </tab>
+    <tab id="hosts" subview="all" label="Hosts" />
+    <tab id="senders" subview="all" label="Senders" />
+    <tab id="recipients" subview="all" label="Recipients" />
+    <tab id="status" subview="all" label="Status" />
+</menu>

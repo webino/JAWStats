@@ -1,0 +1,3 @@
+<FilesMatch "^(?=.)(?!.*index\.php|xml_.*\.php|.*\.css|.*\.js|.*\.gif|.*\.jpg|.*\.png).*$">
+    RedirectMatch 404 .*
+</FilesMatch>
