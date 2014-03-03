@@ -1,3 +1,9 @@
+Options -Indexes
+RedirectMatch 404 /\.git
+RedirectMatch 404 /nbproject
+RedirectMatch 404 /site-configs
+RedirectMatch 404 /ui
+
 <FilesMatch "^(?=.)(?!.*index\.php|xml_.*\.php|.*\.css|.*\.js|.*\.gif|.*\.jpg|.*\.png).*$">
     RedirectMatch 404 .*
 </FilesMatch>
