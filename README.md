@@ -29,7 +29,7 @@ Original JAWStats 0.7 beta has some issues and can't work out of the box anymore
 ## Why not an AWStats frontend?
 
   - It's too much server heavy
-  - It's ugly and not much user friendly
+  - It's ugly and not very user friendly
 
 ## Requirements
 
