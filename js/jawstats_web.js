@@ -86,7 +86,8 @@ function DrawGraph_EachYear() {
     DrawBar(aItem, aActiveValue, aInitial);
 }
 
-function DrawGraph_AllMonths() {
+function DrawGraph_AllMonths(sStatType) {
+    sStatType = typeof sStatType !== 'undefined' ? sStatType : "iVisits";
     oAllMonths = aStatistics["allmonths"];
     var aItem = [];
     var aValue = [];
@@ -100,7 +101,7 @@ function DrawGraph_AllMonths() {
         for (part_idx in oAllMonths)
             if (aParts[part_idx].active && (oAllMonths[part_idx] != null))
                 if (!(oAllMonths[part_idx].aData[iIndex] === undefined))
-                    aValue[part_idx].push(oAllMonths[part_idx].aData[iIndex].iVisits);
+                    aValue[part_idx].push(oAllMonths[part_idx].aData[iIndex][sStatType]);
     }
     DrawGraph(aItem, aValue, [], "time");
 }
