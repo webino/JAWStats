@@ -48,6 +48,23 @@ Original JAWStats 0.7 beta has some issues and can't work out of the box anymore
 
      *NOTE: [Original JAWStats installation guide](http://www.jawstats.com/documentation)*
 
+## Changelog
+
+### 0.9.0
+
+  - Graph display based on the table column header sort
+
+### 0.8.0
+
+  - Deprived of Flash
+  - PHP notices and deprecated functions
+  - White screen of dead
+  - Broken AJAX
+  - A separate config for each site
+  - AWStats data custom filename
+  - Latest JAWStats Language Pack included
+  - Files protection with .htaccess
+
 ## Addendum
 
   Please, if you are interested in this great tool report any issues and don't hesitate to contribute.
