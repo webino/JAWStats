@@ -581,23 +581,6 @@
                             // get current column index
                             var i = this.column;
 
-                            switch (this.innerHTML) {
-                                case "Hits":
-                                    DrawGraph_AllMonths("iHits");
-                                    break;
-                                case "BW":
-                                    DrawGraph_AllMonths("iBW");
-                                    break;
-                                case "Pages":
-                                    DrawGraph_AllMonths("iPages");
-                                    break;
-                                case "Unique Visitors":
-                                    DrawGraph_AllMonths("iUniques");
-                                    break;
-                                default:
-                                    DrawGraph_AllMonths("iVisits");
-                            }
-
                             // get current column sort order
                             this.order = this.count++ % 2;
 
