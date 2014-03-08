@@ -25,6 +25,10 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
+$.ajaxSetup({
+    async: false
+});
+
 var oPaging = {
     oKeywords: {iCurrPage: 0, iRowCount: 0, iRowsPerPage: 15, sSort: "freqDESC"},
     oKeyphrases: {iCurrPage: 0, iRowCount: 0, iRowsPerPage: 15, sSort: "freqDESC"}
