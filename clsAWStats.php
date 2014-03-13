@@ -271,9 +271,10 @@ class clsAWStats
         $iEndPos   = strpos($this->sAWStats, ("\nEND_" . $sSection), $iStartPos);
         $max       = 0;
         $aDesc     = $GLOBALS["aDesc"];
-        if (isset($_GET["max"]))
-            $max       = $_GET["max"];
+        if (isset($_REQUEST["max"]))
+            $max       = $_REQUEST["max"];
         $arrStat   = explode("\n", substr($this->sAWStats, ($iStartPos + 1), ($iEndPos - $iStartPos - 1)));
+
         if ($max == 0)
             for ($iIndex = 1; $iIndex < count($arrStat); $iIndex++) {
                 $data_line = explode(' ', $arrStat[$iIndex]);
@@ -362,8 +363,8 @@ function GetConfig()
     }
 
     // check this site config exists
-    if ((isset($_GET["config"]) == true) && (isset($GLOBALS["aConfig"][$_GET["config"]]) == true) && ($GLOBALS['bForceHttpHost'] === false)) {
-        $sConfig = $_GET["config"];
+    if ((isset($_REQUEST["config"]) == true) && (isset($GLOBALS["aConfig"][$_REQUEST["config"]]) == true) && ($GLOBALS['bForceHttpHost'] === false)) {
+        $sConfig = $_REQUEST["config"];
     } else if (($GLOBALS['bUseHttpHost'] === true) && isset($GLOBALS["aConfig"][$_ENV['HTTP_HOST']])) {
         $sConfig = $_ENV['HTTP_HOST'];
     } else if ($GLOBALS['bForceHttpHost'] === false) {
@@ -523,8 +524,8 @@ function SetTranslation()
         return false;
     }
     // check for existence of querystring
-    if ((isset($_GET["lang"]) == true) && (FindTranslation($_GET["lang"]) == true)) {
-        return $_GET["lang"];
+    if ((isset($_REQUEST["lang"]) == true) && (FindTranslation($_REQUEST["lang"]) == true)) {
+        return $_REQUEST["lang"];
     }
     // check for existence of site config
     if ((isset($GLOBALS["g_aConfig"]["language"]) == true) && (FindTranslation($GLOBALS["g_aConfig"]["language"]) == true)) {
