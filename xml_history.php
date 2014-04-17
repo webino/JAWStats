@@ -42,12 +42,12 @@ if ((isset($g_aConfig["includes"]) == true) && (strlen($g_aConfig["includes"]) >
 $g_sConfig = GetConfig();
 $g_aConfig = $aConfig[$g_sConfig];
 
-if (isset($_GET["part"])) {
-    $g_sConfig = $g_sConfig . "." . $_GET["part"];
+if (isset($_REQUEST["part"])) {
+    $g_sConfig = $g_sConfig . "." . $_REQUEST["part"];
 }
 
 // get date range and valid log file
-$g_dtStatsMonth = ValidateDate(isset($_GET["year"]) ? $_GET["year"] : null, isset($_GET["month"]) ? $_GET["month"]
+$g_dtStatsMonth = ValidateDate(isset($_REQUEST["year"]) ? $_REQUEST["year"] : null, isset($_REQUEST["month"]) ? $_REQUEST["month"]
             : null);
 $g_aLogFiles    = GetLogList($g_sConfig, $g_aConfig["statspath"], $g_aConfig["statsname"]);
 
