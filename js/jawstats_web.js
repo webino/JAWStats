@@ -2660,7 +2660,7 @@ function PageLayout_Pages(sPage) {
     $("#content").html(sHTML);
     $("#content").fadeIn(g_iFadeSpeed);
     if (aTable[0] == true) {
-        $(".tablesorter").tablesorter({headers: {2: {sorter: false}, 3: {sorter: 'bandwidth'}, 4: {sorter: false}, 6: {sorter: false}, 8: {sorter: false}}, sortList: [aSort], textExtraction: function(node) {
+        $(".tablesorter").tablesorter({headers: {1: {sorter: 'formatted_number'}, 2: {sorter: false}, 3: {sorter: 'bandwidth'}, 4: {sorter: false}, 6: {sorter: false}, 8: {sorter: false}}, sortList: [aSort], textExtraction: function(node) {
                 return node.innerHTML.replace(',', '');
             }, widgets: ['zebra']});
     }

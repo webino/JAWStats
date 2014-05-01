@@ -789,6 +789,17 @@
     });
 
     ts.addParser({
+        id: "formatted_number",
+        is: function(s) {
+            return true;
+        },
+        format: function(s) {
+            return s.replace(',','');
+        },
+        type: "numeric"
+    });
+
+    ts.addParser({
         id: "currency",
         is: function(s) {
             return /^[Â£$â‚¬?.]/.test(s);
