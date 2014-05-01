@@ -25,12 +25,17 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
+$.ajaxSetup({
+    async: false
+});
+
 var oPaging = {
     oKeywords: {iCurrPage: 0, iRowCount: 0, iRowsPerPage: 15, sSort: "freqDESC"},
     oKeyphrases: {iCurrPage: 0, iRowCount: 0, iRowsPerPage: 15, sSort: "freqDESC"}
 };
 
-function DrawGraph_EachYear() {
+function DrawGraph_EachYear(sStatType) {
+    sStatType = typeof sStatType !== 'undefined' ? sStatType : "iVisits";
     var aItem = [];
     var aValue = [];
     var aInitial = [];
@@ -54,7 +59,7 @@ function DrawGraph_EachYear() {
         if (year == cur_year) {
             for (part_idx in oAllMonths)
                 if (aParts[part_idx].active && !(oAllMonths[part_idx].aData[iIndex] === undefined))
-                    cur_visits[part_idx] += oAllMonths[part_idx].aData[iIndex].iVisits;
+                    cur_visits[part_idx] += oAllMonths[part_idx].aData[iIndex][sStatType];
         } else {
             aItem.push(cur_year);
             aInitial.push(cur_year.toString().substr(2));
@@ -67,7 +72,7 @@ function DrawGraph_EachYear() {
             cur_year = year;
             for (part_idx in oAllMonths)
                 if (aParts[part_idx].active)
-                    cur_visits[part_idx] = oAllMonths[part_idx].aData[iIndex].iVisits;
+                    cur_visits[part_idx] = oAllMonths[part_idx].aData[iIndex][sStatType];
         }
     }
     aItem.push(cur_year);
@@ -106,7 +111,8 @@ function DrawGraph_AllMonths(sStatType) {
     DrawGraph(aItem, aValue, [], "time");
 }
 
-function DrawGraph_ThisMonth() {
+function DrawGraph_ThisMonth(sStatType) {
+    sStatType = typeof sStatType !== 'undefined' ? sStatType : "iVisits";
     var oThisMonth = aStatistics["thismonth"];
 
     var aItem = [];
@@ -141,7 +147,7 @@ function DrawGraph_ThisMonth() {
         for (part_idx in oThisMonth) {
             if (aParts[part_idx].active)
                 if (oThisMonth[part_idx].aData[iIndex])
-                    aValue[part_idx][iDay] = oThisMonth[part_idx].aData[iIndex].iVisits;
+                    aValue[part_idx][iDay] = oThisMonth[part_idx].aData[iIndex][sStatType];
                 else
                     aValue[part_idx][iDay] = 0;
         }
@@ -156,7 +162,8 @@ function DrawGraph_ThisMonth() {
     DrawBar(aItem, aActiveValue, aInitial);
 }
 
-function DrawGraph_Time() {
+function DrawGraph_Time(sStatType) {
+    sStatType = typeof sStatType !== 'undefined' ? sStatType : "iPages";
     var oTime = aStatistics["time"];
     var aItem = [];
     var aValue = [];
@@ -174,7 +181,7 @@ function DrawGraph_Time() {
         aItem.push(sHour);
         for (part_idx in oTime)
             if (aParts[part_idx].active && (oTime[part_idx] != null))
-                aValue[part_idx].push(oTime[part_idx].aData[iRow].iPages);
+                aValue[part_idx].push(oTime[part_idx].aData[iRow][sStatType]);
     }
     DrawGraph(aItem, aValue, [], null);
 }
@@ -2305,9 +2312,54 @@ function PageLayout_AllMonths(sPage) {
     }
     if (sPage == "all") {
         DrawGraph_AllMonths();
+        // observe tablesorter
+        $(".tablesorter th").click(function() {
+            switch (this.innerHTML) {
+                case "Hits":
+                    DrawGraph_AllMonths("iHits");
+                    break;
+                case "BW":
+                    DrawGraph_AllMonths("iBW");
+                    break;
+                case "Pages":
+                    DrawGraph_AllMonths("iPages");
+                    break;
+                case "Unique Visitors":
+                    DrawGraph_AllMonths("iUniques");
+                    break;
+                case "Visitors per Day":
+                    DrawGraph_AllMonths("iDaysInMonth");
+                    break;
+                default:
+                    DrawGraph_AllMonths("iVisits");
+            }
+        });
+
     } else {
         DrawGraph_EachYear();
+        // observe tablesorter
+        $(".tablesorter th").click(function() {
+            switch (this.innerHTML) {
+                case "Hits":
+                    DrawGraph_EachYear("iHits");
+                    break;
+                case "BW":
+                    DrawGraph_EachYear("iBW");
+                    break;
+                case "Pages":
+                    DrawGraph_EachYear("iPages");
+                    break;
+                case "Unique Visitors":
+                    DrawGraph_EachYear("iUniques");
+                    break;
+                case "Visitors per Day":
+                    DrawGraph_EachYear("iDaysInMonth");
+                    break;
+                default:
+                    DrawGraph_EachYear("iVisits");
     }
+        });
+}
 }
 
 function PageLayout_Browser(sPage) {
@@ -2727,6 +2779,24 @@ function PageLayout_ThisMonth(sPage) {
                     }, widgets: ['zebra']});
             }
             DrawGraph_ThisMonth();
+            // observe tablesorter
+            $(".tablesorter th").click(function() {
+                switch (this.innerHTML) {
+                    case "per Visit":
+            break;
+                    case "Pages":
+                        DrawGraph_ThisMonth("iPages");
+                        break;
+                    case "Hits":
+                        DrawGraph_ThisMonth("iHits");
+                        break;
+                    case "BW":
+                        DrawGraph_ThisMonth("iBW");
+                        break;
+                    default:
+                        DrawGraph_ThisMonth("iVisits");
+                }
+            });
             break;
         case "bandwidth":
             Misc_ThisMonthCalendar("Calendar of Bandwidth Usage this Month", "Calendar of Bandwidth Usage", "iBW");
@@ -2756,6 +2826,28 @@ function PageLayout_Time(sPage) {
             }, widgets: ['zebra']});
     }
     DrawGraph_Time();
+    // observe tablesorter
+    $(".tablesorter th").click(function() {
+        switch (this.innerHTML) {
+            case "Hits":
+                DrawGraph_Time("iHits");
+                break;
+            case "BW":
+                DrawGraph_Time("iBW");
+                break;
+            case "<small>Not&nbsp;Viewed</small><br>Pages":
+                DrawGraph_Time("iNVPages");
+                break;
+            case "<small>Not&nbsp;Viewed</small><br>Hits":
+                DrawGraph_Time("iNVHits");
+                break;
+            case "<small>Not&nbsp;Viewed</small><br>BW":
+                DrawGraph_Time("iNVBW");
+                break;
+            default:
+                DrawGraph_Time("iPages");
+}
+    });
 }
 
 function PagingInputNumber(oEvent, oInput, sType) {

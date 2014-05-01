@@ -42,17 +42,17 @@ if ((isset($g_aConfig["includes"]) == true) && (strlen($g_aConfig["includes"]) >
 $g_sConfig = GetConfig();
 $g_aConfig = $aConfig[$g_sConfig];
 
-if (isset($_GET["part"])) {
-    $g_sConfig = $g_sConfig . "." . $_GET["part"];
+if (isset($_REQUEST["part"])) {
+    $g_sConfig = $g_sConfig . "." . $_REQUEST["part"];
 }
 
 // create class
 $clsAWStats = new clsAWStats($g_sConfig, $g_aConfig["statspath"], isset($g_aConfig["statsname"]) ? $g_aConfig["statsname"]
-            : null, $_GET["year"], $_GET["month"]);
+            : null, $_REQUEST["year"], $_REQUEST["month"]);
 
 if ($clsAWStats->bLoaded) {
     // create xml
-    $sSection = $_GET["section"];
+    $sSection = $_REQUEST["section"];
     switch ($sSection) {
         case "BROWSER":
         case "DAY":

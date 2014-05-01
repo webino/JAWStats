@@ -75,8 +75,8 @@ if ((isset($g_aConfig["includes"]) == true) && (strlen($g_aConfig["includes"]) >
 }
 
 // get date range and valid log file
-$year           = array_key_exists("year", $_GET) ? $_GET["year"] : NULL;
-$month          = array_key_exists("month", $_GET) ? $_GET["month"] : NULL;
+$year           = array_key_exists("year", $_REQUEST) ? $_REQUEST["year"] : NULL;
+$month          = array_key_exists("month", $_REQUEST) ? $_REQUEST["month"] : NULL;
 $statsname      = array_key_exists("statsname", $g_aConfig) ? $g_aConfig["statsname"] : NULL;
 $parts          = array_key_exists("parts", $g_aConfig) ? $g_aConfig["parts"] : NULL;
 $g_dtStatsMonth = ValidateDate($year, $month);
@@ -104,7 +104,7 @@ if ($clsPage->ValidateView($GLOBALS["sConfigDefaultView"]) != true) {
     Error("BadConfig", "sConfigDefaultView");
 }
 
-$sView = array_key_exists("view", $_GET) ? $_GET["view"] : NULL;
+$sView = array_key_exists("view", $_REQUEST) ? $_REQUEST["view"] : NULL;
 // validate current view
 if ($clsPage->ValidateView($sView) == true) {
     $sCurrentView = $sView;
