@@ -14,6 +14,7 @@ Original JAWStats 0.7 beta has some issues and can't work out of the box anymore
   - Web 2.0 look and feel
   - Multi-Language
   - Fully Skinnable
+  - Configurable base URL for static files
 
 ## Fixes
 

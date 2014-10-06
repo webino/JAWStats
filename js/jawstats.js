@@ -41,10 +41,10 @@ $(document).ready(function() {
 
     // change language mouseover
     $("#toolLanguageButton").mouseover(function() {
-        $("#toolLanguageButton img").attr("src", "themes/" + sThemeDir + "/images/change_language_on.gif");
+        $("#toolLanguageButton img").attr("src", sStaticUrl + "themes/" + sThemeDir + "/images/change_language_on.gif");
     });
     $("#toolLanguageButton").mouseout(function() {
-        $("#toolLanguageButton img").attr("src", "themes/" + sThemeDir + "/images/change_language.gif");
+        $("#toolLanguageButton img").attr("src", sStaticUrl + "themes/" + sThemeDir + "/images/change_language.gif");
     });
     if (g_sParts.length == 0)
         aParts = [{name: "", active: true}];
