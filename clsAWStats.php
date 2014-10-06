@@ -254,7 +254,9 @@ class clsAWStats
         for ($iIndexItem = 0; $iIndexItem < count($arrData); $iIndexItem++) {
             $sTemp = "";
             for ($iIndexAttr = 0; $iIndexAttr < count($arrData[$iIndexItem]); $iIndexAttr++) {
-                $sTemp .= $this->arrLabel[$sSection][$iIndexAttr] . "=\"" . htmlspecialchars(urldecode(trim($arrData[$iIndexItem][$iIndexAttr]))) . "\" ";
+                if ($this->arrLabel[$sSection][$iIndexAttr]) {
+                    $sTemp .= $this->arrLabel[$sSection][$iIndexAttr] . "=\"" . htmlspecialchars(urldecode(trim($arrData[$iIndexItem][$iIndexAttr]))) . "\" ";
+                }
             }
             $aXML[] = ("<item " . $sTemp . "/>\n");
         }
