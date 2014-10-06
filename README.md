@@ -14,6 +14,7 @@ Original JAWStats 0.7 beta has some issues and can't work out of the box anymore
   - Web 2.0 look and feel
   - Multi-Language
   - Fully Skinnable
+  - Configurable base URL for static files
 
 ## Fixes
 
@@ -29,7 +30,7 @@ Original JAWStats 0.7 beta has some issues and can't work out of the box anymore
 ## Why not an AWStats frontend?
 
   - It's too much server heavy
-  - It's ugly and not much user friendly
+  - It's ugly and not very user friendly
 
 ## Requirements
 
@@ -47,6 +48,25 @@ Original JAWStats 0.7 beta has some issues and can't work out of the box anymore
      *NOTE: Create as many site configs as you need.*
 
      *NOTE: [Original JAWStats installation guide](http://www.jawstats.com/documentation)*
+
+## Changelog
+
+### 0.9.0
+
+  - Graph display based on the table column header sort
+  - Replace all instances of $_GET with $_REQUEST
+  - Fix of the AWStats GeoIP plugin illegal HTML data
+
+### 0.8.0
+
+  - Deprived of Flash
+  - PHP notices and deprecated functions
+  - White screen of dead
+  - Broken AJAX
+  - A separate config for each site
+  - AWStats data custom filename
+  - Latest JAWStats Language Pack included
+  - Files protection with .htaccess
 
 ## Addendum
 

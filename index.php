@@ -75,8 +75,8 @@ if ((isset($g_aConfig["includes"]) == true) && (strlen($g_aConfig["includes"]) >
 }
 
 // get date range and valid log file
-$year           = array_key_exists("year", $_GET) ? $_GET["year"] : NULL;
-$month          = array_key_exists("month", $_GET) ? $_GET["month"] : NULL;
+$year           = array_key_exists("year", $_REQUEST) ? $_REQUEST["year"] : NULL;
+$month          = array_key_exists("month", $_REQUEST) ? $_REQUEST["month"] : NULL;
 $statsname      = array_key_exists("statsname", $g_aConfig) ? $g_aConfig["statsname"] : NULL;
 $parts          = array_key_exists("parts", $g_aConfig) ? $g_aConfig["parts"] : NULL;
 $g_dtStatsMonth = ValidateDate($year, $month);
@@ -104,7 +104,7 @@ if ($clsPage->ValidateView($GLOBALS["sConfigDefaultView"]) != true) {
     Error("BadConfig", "sConfigDefaultView");
 }
 
-$sView = array_key_exists("view", $_GET) ? $_GET["view"] : NULL;
+$sView = array_key_exists("view", $_REQUEST) ? $_REQUEST["view"] : NULL;
 // validate current view
 if ($clsPage->ValidateView($sView) == true) {
     $sCurrentView = $sView;
@@ -149,24 +149,24 @@ if (!$bHaveLog)
     <head>
         <title><?php echo str_replace("[SITE]", GetSiteName(), str_replace("[MONTH]", Lang(date("F", $g_aLogFiles[$g_iThisLog][0])), str_replace("[YEAR]", date("Y", $g_aLogFiles[$g_iThisLog][0]), Lang("Statistics for [SITE] in [MONTH] [YEAR]")))) ?></title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" href="themes/<?php echo $g_aConfig["theme"] ?>/style.css" type="text/css" />
-        <!-- script type="text/javascript" src="js/packed.js?<?php echo $gc_sJavascriptVersion ?>"></script -->
+        <link rel="stylesheet" href="<?php echo $sStaticUrl ?>themes/<?php echo $g_aConfig["theme"] ?>/style.css" type="text/css" />
+        <!-- script type="text/javascript" src="<?php echo $sStaticUrl ?>js/packed.js?<?php echo $gc_sJavascriptVersion ?>"></script -->
 
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/jquery.json.js"></script>
-        <script type="text/javascript" src="js/jquery.tablesorter.js"></script>
-        <!--[if IE]><script type="text/javascript" src="js/excanvas.js"></script><![endif]-->
-        <script type="text/javascript" src="js/jquery.flot.js"></script>
-        <script type="text/javascript" src="js/jquery.flot.pie.js"></script>
-        <script type="text/javascript" src="js/jquery.flot.label.js"></script>
-        <script type="text/javascript" src="js/jquery.flot.stack.js"></script>
+        <script type="text/javascript" src="<?php echo $sStaticUrl ?>js/jquery.js"></script>
+        <script type="text/javascript" src="<?php echo $sStaticUrl ?>js/jquery.json.js"></script>
+        <script type="text/javascript" src="<?php echo $sStaticUrl ?>js/jquery.tablesorter.js"></script>
+        <!--[if IE]><script type="text/javascript" src="<?php echo $sStaticUrl ?>js/excanvas.js"></script><![endif]-->
+        <script type="text/javascript" src="<?php echo $sStaticUrl ?>js/jquery.flot.js"></script>
+        <script type="text/javascript" src="<?php echo $sStaticUrl ?>js/jquery.flot.pie.js"></script>
+        <script type="text/javascript" src="<?php echo $sStaticUrl ?>js/jquery.flot.label.js"></script>
+        <script type="text/javascript" src="<?php echo $sStaticUrl ?>js/jquery.flot.stack.js"></script>
 
 
         <?php echo $clsPage->SubMenuJSObj(); ?>
 
-        <script type="text/javascript" src="js/constants.js?<?php echo $gc_sJavascriptVersion ?>"></script>
-        <script type="text/javascript" src="js/jawstats.js?<?php echo $gc_sJavascriptVersion ?>"></script>
-        <script type="text/javascript" src="js/jawstats_<?php echo $g_aConfig['type'] ?>.js?<?php echo $gc_sJavascriptVersion ?>"></script>
+        <script type="text/javascript" src="<?php echo $sStaticUrl ?>js/constants.js?<?php echo $gc_sJavascriptVersion ?>"></script>
+        <script type="text/javascript" src="<?php echo $sStaticUrl ?>js/jawstats.js?<?php echo $gc_sJavascriptVersion ?>"></script>
+        <script type="text/javascript" src="<?php echo $sStaticUrl ?>js/jawstats_<?php echo $g_aConfig['type'] ?>.js?<?php echo $gc_sJavascriptVersion ?>"></script>
         <script type="text/javascript">
             var g_sConfig = "<?php echo $g_sConfig ?>";
             var g_sParts = "<?php
@@ -181,11 +181,12 @@ if (!$bHaveLog)
             var g_sLanguage = "<?php echo $sLanguageCode ?>";
             var sThemeDir = "<?php echo $g_aConfig["theme"] ?>";
             var sUpdateFilename = "<?php echo $sUpdateSiteFilename ?>";
+            var sStaticUrl = "<?php echo $sStaticUrl ?>";
         </script>
-        <script type="text/javascript" src="themes/<?php echo $g_aConfig["theme"] ?>/style.js?<?php echo $gc_sJavascriptVersion ?>"></script>
+        <script type="text/javascript" src="<?php echo $sStaticUrl ?>themes/<?php echo $g_aConfig["theme"] ?>/style.js?<?php echo $gc_sJavascriptVersion ?>"></script>
         <?php
         if ($sLanguageCode != "en-gb") {
-            echo "  <script type=\"text/javascript\" src=\"languages/" . $sLanguageCode . ".js\"></script>\n";
+            echo "  <script type=\"text/javascript\" src=\"" . $sStaticUrl . "languages/" . $sLanguageCode . ".js\"></script>\n";
         }
         ?>
         <!-- script type="text/javascript" src="http://version.jawstats.com/version.js"></script -->
@@ -214,19 +215,19 @@ if (!$bHaveLog)
 // change month
                 echo "<span>";
                 if ($g_iThisLog < (count($g_aLogFiles) - 1)) {
-                    echo "<img src=\"themes/" . $g_aConfig["theme"] . "/changemonth/first.gif\" onmouseover=\"this.src='themes/" . $g_aConfig["theme"] . "/changemonth/first_on.gif'\" onmouseout=\"this.src='themes/" . $g_aConfig["theme"] . "/changemonth/first.gif'\" class=\"changemonth\" onclick=\"ChangeMonth(" . date("Y,n", $g_aLogFiles[count($g_aLogFiles) - 1][0]) . ")\" />" .
-                    "<img src=\"themes/" . $g_aConfig["theme"] . "/changemonth/prev.gif\" onmouseover=\"this.src='themes/" . $g_aConfig["theme"] . "/changemonth/prev_on.gif'\" onmouseout=\"this.src='themes/" . $g_aConfig["theme"] . "/changemonth/prev.gif'\" class=\"changemonth\" onclick=\"ChangeMonth(" . date("Y,n", $g_aLogFiles[$g_iThisLog + 1][0]) . ")\" />";
+                    echo "<img src=\"" . $sStaticUrl . "themes/" . $g_aConfig["theme"] . "/changemonth/first.gif\" onmouseover=\"this.src='" . $sStaticUrl . "themes/" . $g_aConfig["theme"] . "/changemonth/first_on.gif'\" onmouseout=\"this.src='" . $sStaticUrl . "themes/" . $g_aConfig["theme"] . "/changemonth/first.gif'\" class=\"changemonth\" onclick=\"ChangeMonth(" . date("Y,n", $g_aLogFiles[count($g_aLogFiles) - 1][0]) . ")\" />" .
+                    "<img src=\"" . $sStaticUrl . "themes/" . $g_aConfig["theme"] . "/changemonth/prev.gif\" onmouseover=\"this.src='" . $sStaticUrl . "themes/" . $g_aConfig["theme"] . "/changemonth/prev_on.gif'\" onmouseout=\"this.src='" . $sStaticUrl . "themes/" . $g_aConfig["theme"] . "/changemonth/prev.gif'\" class=\"changemonth\" onclick=\"ChangeMonth(" . date("Y,n", $g_aLogFiles[$g_iThisLog + 1][0]) . ")\" />";
                 } else {
-                    echo "<img src=\"themes/" . $g_aConfig["theme"] . "/changemonth/first_off.gif\" class=\"changemonthOff\" />" .
-                    "<img src=\"themes/" . $g_aConfig["theme"] . "/changemonth/prev_off.gif\" class=\"changemonthOff\" />";
+                    echo "<img src=\"" . $sStaticUrl . "themes/" . $g_aConfig["theme"] . "/changemonth/first_off.gif\" class=\"changemonthOff\" />" .
+                    "<img src=\"" . $sStaticUrl . "themes/" . $g_aConfig["theme"] . "/changemonth/prev_off.gif\" class=\"changemonthOff\" />";
                 }
                 echo "<span onclick=\"ShowTools('toolMonth');\">" . Lang("Change Month") . "</span>";
                 if ($g_iThisLog > 0) {
-                    echo "<img src=\"themes/" . $g_aConfig["theme"] . "/changemonth/next.gif\" onmouseover=\"this.src='themes/" . $g_aConfig["theme"] . "/changemonth/next_on.gif'\" onmouseout=\"this.src='themes/" . $g_aConfig["theme"] . "/changemonth/next.gif'\" class=\"changemonth\" onclick=\"ChangeMonth(" . date("Y,n", $g_aLogFiles[$g_iThisLog - 1][0]) . ")\" />" .
-                    "<img src=\"themes/" . $g_aConfig["theme"] . "/changemonth/last.gif\" onmouseover=\"this.src='themes/" . $g_aConfig["theme"] . "/changemonth/last_on.gif'\" onmouseout=\"this.src='themes/" . $g_aConfig["theme"] . "/changemonth/last.gif'\" class=\"changemonth\" onclick=\"ChangeMonth(" . date("Y,n", $g_aLogFiles[0][0]) . ")\" /> ";
+                    echo "<img src=\"" . $sStaticUrl . "themes/" . $g_aConfig["theme"] . "/changemonth/next.gif\" onmouseover=\"this.src='" . $sStaticUrl . "themes/" . $g_aConfig["theme"] . "/changemonth/next_on.gif'\" onmouseout=\"this.src='" . $sStaticUrl . "themes/" . $g_aConfig["theme"] . "/changemonth/next.gif'\" class=\"changemonth\" onclick=\"ChangeMonth(" . date("Y,n", $g_aLogFiles[$g_iThisLog - 1][0]) . ")\" />" .
+                    "<img src=\"" . $sStaticUrl . "themes/" . $g_aConfig["theme"] . "/changemonth/last.gif\" onmouseover=\"this.src='" . $sStaticUrl . "themes/" . $g_aConfig["theme"] . "/changemonth/last_on.gif'\" onmouseout=\"this.src='" . $sStaticUrl . "themes/" . $g_aConfig["theme"] . "/changemonth/last.gif'\" class=\"changemonth\" onclick=\"ChangeMonth(" . date("Y,n", $g_aLogFiles[0][0]) . ")\" /> ";
                 } else {
-                    echo "<img src=\"themes/" . $g_aConfig["theme"] . "/changemonth/next_off.gif\" class=\"changemonthOff\" />" .
-                    "<img src=\"themes/" . $g_aConfig["theme"] . "/changemonth/last_off.gif\" class=\"changemonthOff\" />";
+                    echo "<img src=\"" . $sStaticUrl . "themes/" . $g_aConfig["theme"] . "/changemonth/next_off.gif\" class=\"changemonthOff\" />" .
+                    "<img src=\"" . $sStaticUrl . "themes/" . $g_aConfig["theme"] . "/changemonth/last_off.gif\" class=\"changemonthOff\" />";
                 }
                 echo "</span>\n";
 
@@ -242,13 +243,13 @@ if (!$bHaveLog)
 
 // change language
                 echo "<span id=\"toolLanguageButton\" onclick=\"ShowTools('toolLanguage')\">" . Lang("Change Language") .
-                "<img src=\"themes/" . $g_aConfig["theme"] . "/images/change_language.gif\" /></span>\n";
+                "<img src=\"" . $sStaticUrl . "themes/" . $g_aConfig["theme"] . "/images/change_language.gif\" /></span>\n";
                 ?>
             </div>
         </div>
 
         <div id="header">
-            <img class="logo" style="float:left;" src="themes/<?php echo $g_aConfig["theme"] ?>/images/logo.gif" />
+            <img class="logo" style="float:left;" src="<?php echo $sStaticUrl ?>themes/<?php echo $g_aConfig["theme"] ?>/images/logo.gif" />
             <div class="container">
                 <?php echo $clsPage->DrawHeader($g_aLogFiles[$g_iThisLog][0]) ?>
 
