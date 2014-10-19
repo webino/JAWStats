@@ -56,6 +56,7 @@ Original JAWStats 0.7 beta has some issues and can't work out of the box anymore
   - Graph display based on the table column header sort
   - Replace all instances of $_GET with $_REQUEST
   - Fix of the AWStats GeoIP plugin illegal HTML data
+  - Configurable base URL for static files
 
 ### 0.8.0
 
