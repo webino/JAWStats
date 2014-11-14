@@ -85,7 +85,7 @@ class clsAWStats
         $this->iTotalUnique = $this->GetSummaryElement($arrData, "totalunique", 1);
 
         // populate label array
-        $this->arrLabel["BROWSER"]                   = array("id", "hits");
+        $this->arrLabel["BROWSER"]                   = array("id", "hits", "pages");
         $this->arrLabel["DAY"]                       = array("date", "pages", "hits", "bw", "visits");
         $this->arrLabel["DOMAIN"]                    = array("id", "pages", "hits", "bw");
         $this->arrLabel["ERRORS"]                    = array("id", "hits", "bw");
