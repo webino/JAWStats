@@ -70,7 +70,7 @@ class clsAWStats
         $this->sFileName = $sFileName;
 
         if (is_readable($sFilePath)) {
-            $this->sAWStats = htmlspecialchars(file_get_contents($sFilePath));
+            $this->sAWStats = htmlspecialchars(file_get_contents($sFilePath), ENT_QUOTES | ENT_IGNORE, 'utf-8');
             $this->bLoaded  = true;
         }
         else
@@ -91,7 +91,7 @@ class clsAWStats
         $this->arrLabel["ERRORS"]                    = array("id", "hits", "bw");
         $this->arrLabel["FILETYPES"]                 = array("id", "hits", "bw", "noncompressedbw", "compressedbw");
         $this->arrLabel["KEYWORDS"]                  = array("word", "freq");
-        $this->arrLabel["OS"]                        = array("id", "hits");
+        $this->arrLabel["OS"]                        = array("id", "hits", 'pages');
         $this->arrLabel["PAGEREFS"]                  = array("url", "pages", "hits");
         $this->arrLabel["ROBOT"]                     = array("id", "hits", "bw", "lastvisit", "robotstxt");
         $this->arrLabel["SEARCHWORDS"]               = array("phrase", "freq");
