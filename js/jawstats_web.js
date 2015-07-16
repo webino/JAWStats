@@ -1418,7 +1418,7 @@ function DrawTable_Visitor() {
     aHTML = new Array();
     for (var iRow in aData) {
         aHTML.push("<tr>" +
-                "<td>" + oVisitor.aData[iRow].sDesc + "</td>" +
+                "<td>" + oVisitor.aData[iRow].sAddress + "</td>" +
                 "<td class=\"right\">" + NumberFormat(oVisitor.aData[iRow].iPages, 0) + "</td>" +
                 "<td class=\"right\">" + ((oVisitor.aData[iRow].iPages / iTotalPages) * 100).toFixed(1) + "%</td>" +
                 "<td class=\"right\">" + NumberFormat(oVisitor.aData[iRow].iHits, 0) + "</td>" +
