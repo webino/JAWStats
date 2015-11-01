@@ -103,7 +103,7 @@ class clsPage
                         break;
                     case "[SITE]":
                         $aString[$i] = (GetSiteName() . "<a href=\"" . $GLOBALS["g_aConfig"]["siteurl"] .
-                            "\" target=\"_blank\"><img src=\"" . $GLOBALS["sStaticUrl"] . "themes/" . $GLOBALS["g_aConfig"]["theme"] . "images/external_link.png\" class=\"externallink\" /></a>");
+                            "\" target=\"_blank\"><img src=\"" . $GLOBALS["sStaticUrl"] . "themes/" . $GLOBALS["g_aConfig"]["theme"] . "/images/external_link.png\" class=\"externallink\" /></a>");
                         break;
                     case "[YEAR]":
                         $aString[$i] = date("Y", $dtDate);
