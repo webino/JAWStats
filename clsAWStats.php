@@ -424,6 +424,7 @@ function GetLogList($sStatsName, $sFilePath, $sFileName = "", $sParts = "")
                 $aTemp[] = mktime(0, 0, 0, intval($sMonth), 1, intval($sYear));
             }
         }
+        closedir($oDir);
         if (count($aTemp) < 1) {
             Error("NoLogsFound", $GLOBALS["g_sConfig"]);
         }
