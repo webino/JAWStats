@@ -70,7 +70,7 @@ class clsAWStats
         $this->sFileName = $sFileName;
 
         if (is_readable($sFilePath)) {
-            $this->sAWStats = htmlspecialchars(file_get_contents($sFilePath));
+            $this->sAWStats = htmlspecialchars(file_get_contents($sFilePath), ENT_SUBSTITUTE);
             $this->bLoaded  = true;
         }
         else
