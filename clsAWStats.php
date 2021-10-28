@@ -270,7 +270,7 @@ class clsAWStats
             return array();
         $iEndPos   = strpos($this->sAWStats, ("\nEND_" . $sSection), $iStartPos);
         $max       = 0;
-        $aDesc     = $GLOBALS["aDesc"];
+        $aDesc     = array();#$GLOBALS["aDesc"];
         if (isset($_GET["max"]))
             $max       = $_GET["max"];
         $arrStat   = explode("\n", substr($this->sAWStats, ($iStartPos + 1), ($iEndPos - $iStartPos - 1)));
