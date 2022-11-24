@@ -44,7 +44,7 @@ class clsAWStats
     var $iDailyUniqueAvg = 0;
     var $sFileName       = "";
 
-    function clsAWStats($sStatName, $sFilePath = "", $sFileName = "", $iYear = 0, $iMonth = 0)
+    function __construct($sStatName, $sFilePath = "", $sFileName = "", $iYear = 0, $iMonth = 0)
     {
         // validate dates
         $dtDate       = ValidateDate($iYear, $iMonth);

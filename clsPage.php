@@ -32,7 +32,7 @@ class clsPage
     var $sSubMenuJS = "";
     var $aViews     = array();
 
-    function clsPage($type = "")
+    function __construct($type = "")
     {
         if (strlen($type) == 0) {
             $type = "web";
