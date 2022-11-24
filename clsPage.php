@@ -117,7 +117,7 @@ class clsPage
     function DrawFooter()
     {
         $aString = explode("_", str_replace("]", "]_", str_replace("[", "_[", Lang("Powered by [AWSTART]AWStats[END]. Made beautiful by [JAWSTART]JAWStats Web Statistics and Analytics[END]."))));
-        for ($i = 0; $i < count($aString); $i++) {
+        for ($i = 0; $i < count($aString) - 1; $i++) {
             if ((strlen(trim($aString[$i])) > 0) && (substr($aString[$i], 0, 1) != "[") && (substr($aString[$i + 1], 0, 5) != "[END]")) {
                 $aString[$i] = ("<span>" . $aString[$i] . "</span>");
             } else {
