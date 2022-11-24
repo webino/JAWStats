@@ -187,7 +187,7 @@ function ToolChangeLanguage()
     $aHTML[] = "</ul>\n</td>\n</tr>\n</table>";
     $aHTML[] = "</div></div>";
 
-    return implode($aHTML, "\n");
+    return implode("\n", $aHTML);
 }
 
 function ToolChangeMonth()
@@ -230,7 +230,7 @@ function ToolChangeMonth()
     $aHTML[] = "</table>";
     $aHTML[] = "</div></div>";
 
-    return implode($aHTML, "\n");
+    return implode("\n", $aHTML);
 }
 
 function ToolChangeSite()
@@ -270,7 +270,7 @@ function ToolChangeSite()
     $aHTML[] = "</ul>\n</td>\n</tr>\n</table>";
     $aHTML[] = "</div></div>";
 
-    return implode($aHTML, "\n");
+    return implode("\n", $aHTML);
 }
 
 function ToolUpdateSite()
@@ -286,7 +286,7 @@ function ToolUpdateSite()
     $aHTML[] = "<input type=\"password\" id=\"password\" onkeyup=\"UpdateSiteKeyUp(event)\" />";
     $aHTML[] = "<input type=\"button\" onclick=\"UpdateSite()\" value=\"" . Lang("Update") . "\" />";
     $aHTML[] = "</div>\n</div>\n</div>";
-    return implode($aHTML, "\n");
+    return implode("\n", $aHTML);
 }
 
 function ToolChangeParts($sParts, $arrMissingParts)
@@ -306,5 +306,5 @@ function ToolChangeParts($sParts, $arrMissingParts)
     }
     $aHTML[] = "</td>\n</tr>\n</table>";
     $aHTML[] = "</div>\n</div>";
-    return implode($aHTML, "\n");
+    return implode("\n", $aHTML);
 }

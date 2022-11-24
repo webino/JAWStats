@@ -242,7 +242,7 @@ class clsAWStats
         $aXML[] = "</data_exit>\n";
 
         // return
-        return implode($aXML, "");
+        return implode("", $aXML);
     }
 
     function CreateXMLString($sSection)
