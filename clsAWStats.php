@@ -44,7 +44,7 @@ class clsAWStats
     var $iDailyUniqueAvg = 0;
     var $sFileName       = "";
 
-    function clsAWStats($sStatName, $sFilePath = "", $sFileName = "", $iYear = 0, $iMonth = 0)
+    function __construct($sStatName, $sFilePath = "", $sFileName = "", $iYear = 0, $iMonth = 0)
     {
         // validate dates
         $dtDate       = ValidateDate($iYear, $iMonth);
@@ -70,7 +70,7 @@ class clsAWStats
         $this->sFileName = $sFileName;
 
         if (is_readable($sFilePath)) {
-            $this->sAWStats = htmlspecialchars(file_get_contents($sFilePath));
+            $this->sAWStats = htmlspecialchars(file_get_contents($sFilePath), ENT_SUBSTITUTE);
             $this->bLoaded  = true;
         }
         else
@@ -242,7 +242,7 @@ class clsAWStats
         $aXML[] = "</data_exit>\n";
 
         // return
-        return implode($aXML, "");
+        return implode("", $aXML);
     }
 
     function CreateXMLString($sSection)
@@ -270,7 +270,7 @@ class clsAWStats
             return array();
         $iEndPos   = strpos($this->sAWStats, ("\nEND_" . $sSection), $iStartPos);
         $max       = 0;
-        $aDesc     = $GLOBALS["aDesc"];
+        $aDesc     = array();#$GLOBALS["aDesc"];
         if (isset($_GET["max"]))
             $max       = $_GET["max"];
         $arrStat   = explode("\n", substr($this->sAWStats, ($iStartPos + 1), ($iEndPos - $iStartPos - 1)));
@@ -424,6 +424,7 @@ function GetLogList($sStatsName, $sFilePath, $sFileName = "", $sParts = "")
                 $aTemp[] = mktime(0, 0, 0, intval($sMonth), 1, intval($sYear));
             }
         }
+        closedir($oDir);
         if (count($aTemp) < 1) {
             Error("NoLogsFound", $GLOBALS["g_sConfig"]);
         }
